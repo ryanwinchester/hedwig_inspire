@@ -2,12 +2,18 @@ defmodule HedwigInspire.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :hedwig_inspire,
-     version: "0.1.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :hedwig_inspire,
+      version: "0.1.0",
+      elixir: "~> 1.4",
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      deps: deps(),
+      description: description(),
+      package: package(),
+      source_url: "https://github.com/ryanwinchester/hedwig_inspire",
+      name: "Hedwig Inspire",
+    ]
   end
 
   # Configuration for the OTP application
@@ -28,6 +34,25 @@ defmodule HedwigInspire.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:hedwig, "~> 1.0"},
+      {:httpoison, "~> 0.11.2"},
+      {:ex_doc, ">= 0.0.0", only: :dev},
+    ]
+  end
+
+  defp description do
+    """
+    Hedwig Inspirobot Responder
+    """
+  end
+
+  defp package do
+    [
+      name: :hedwig_inspire,
+      maintainers: ["Ryan Winchester"],
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/ryanwinchester/hedwig_inspire"},
+    ]
   end
 end
